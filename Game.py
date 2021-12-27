@@ -64,7 +64,7 @@ class Game:
 
     def check_collision_with_boundaries(self):
         snake_head = self.snake.get_head()
-        if snake_head.x < 0 or snake_head.x > self.grid.width or snake_head.y < 0 or snake_head.y > self.grid.height:
+        if snake_head.x < 0 or snake_head.x >= self.grid.width or snake_head.y < 0 or snake_head.y >= self.grid.height:
             self.game_over()
 
     def check_for_collision_with_snake(self):
@@ -92,7 +92,7 @@ class Game:
                 elif event.key == pygame.K_UP:
                     self.snake.set_direction("up")
         self.counter += 1
-        if self.counter == 5:
+        if self.counter == 6:
             self.snake.move()
             self.check_collision_with_boundaries()
             self.check_for_collision_with_snake()
